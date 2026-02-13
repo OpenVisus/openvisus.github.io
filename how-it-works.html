@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How OpenVisus works: data production, delivery, and interactive visualization.">
+  <title>How It Works - OpenVisus</title>
+  <link rel="icon" href="openvisus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('openvisus-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="openvisus-logo.png" alt="">OpenVisus</a>
+    <div class="nav-inner">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+        <span class="theme-icon theme-icon-sun" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+        <span class="theme-icon theme-icon-moon" aria-hidden="true" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        <span class="theme-label">Light</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="about.html">What It Is</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="examples.html">Examples</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="team.html">Team</a></li>
+    </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="section section-how">
+      <div class="container">
+        <p class="section-brand">OpenVisus</p>
+        <h1 class="section-title">How It Works</h1>
+        <p class="section-lead">OpenVisus enables interactive exploration of petabyte-scale data on devices from supercomputers to commodity laptops, making big data accessible to all users.</p>
+
+        <h2 class="subsection-title">Key Features</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3>Efficient Data Storage</h3>
+            <p>The IDX format stores data in hierarchical Z (HZ) order for cache-oblivious, progressive access. Organize data for efficient multi-resolution queries and scalable visualization.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Scalable Visualization</h3>
+            <p>Interactive visualization of terabyte and petabyte datasets without requiring high-end hardware. Start with coarse overviews and refine to full detail as needed.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Progressive Streaming</h3>
+            <p>Optimized network utilization with state-of-the-art compression algorithms for fast data delivery and streaming from local storage or cloud repositories.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🖥️</div>
+            <h3>Web-Based Dashboards</h3>
+            <p>Customizable dashboards for data analysis accessible from any device with an internet connection. Cross-platform support for supercomputers, desktops, and laptops.</p>
+          </div>
+        </div>
+
+        <h2 class="subsection-title">The Pipeline</h2>
+        <p class="subsection-lead">Produce data, deliver it, and visualize it—all with minimal resources.</p>
+        <div class="pipeline">
+          <div class="pipeline-step">
+            <div class="pipeline-number">01</div>
+            <h3>Data Production</h3>
+            <p>The IDX format stores data in hierarchical Z-order for efficient access. Use PIDX to generate IDX datasets directly from large-scale simulations with real-time monitoring.</p>
+            <a href="http://wiki.visus.org/index.php?title=PIDX" target="_blank" rel="noopener" class="link-arrow">Learn more about PIDX →</a>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-number">02</div>
+            <h3>Data Delivery</h3>
+            <p>Share and stream large datasets using simple server modules (e.g., Apache, Docker). Data can be accessed from local storage or cloud repositories, with optimized streaming for remote analysis and teravoxel imagery delivery.</p>
+            <a href="http://wiki.visus.org/index.php?title=ViSUS_Docker_Deployment" target="_blank" rel="noopener" class="link-arrow">Deploy ViSUS Server →</a>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-number">03</div>
+            <h3>Interactive Analysis & Visualization</h3>
+            <p>Experiment with interactive scripting for rapid data insights. User-friendly querying abstracts the complexities of file systems and cloud services, letting scientists focus on analysis. Use the desktop viewer, WebViewer, or Python with Jupyter notebooks.</p>
+            <a href="https://sci-visus.github.io/OpenVisus/" target="_blank" rel="noopener" class="link-arrow">Documentation →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><img src="openvisus-logo.png" alt="">OpenVisus</a>
+          <p>Open source big data visualization for science.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/sci-visus/OpenVisus" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://visus.org" target="_blank" rel="noopener">ViSUS.org</a>
+          <a href="https://github.com/sci-visus/OpenVisus/blob/master/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+      </div>
+      <p class="footer-copy">© OpenVisus · BSD License · For issues: <a href="mailto:scrgiorgio@gmail.com">scrgiorgio@gmail.com</a>, <a href="mailto:pascucci.valerio@gmail.com">pascucci.valerio@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

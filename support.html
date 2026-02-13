@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenVisus support and contact: documentation, issues, downloads, quick install, and get in touch.">
+  <title>Support & Contact - OpenVisus</title>
+  <link rel="icon" href="openvisus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('openvisus-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="openvisus-logo.png" alt="">OpenVisus</a>
+    <div class="nav-inner">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+        <span class="theme-icon theme-icon-sun" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+        <span class="theme-icon theme-icon-moon" aria-hidden="true" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        <span class="theme-label">Light</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="about.html">What It Is</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="examples.html">Examples</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="team.html">Team</a></li>
+    </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="section section-support">
+      <div class="container">
+        <p class="section-brand">OpenVisus</p>
+        <h1 class="section-title">Support & Resources</h1>
+        <p class="section-lead">For issues or questions, reach out to <a href="mailto:scrgiorgio@gmail.com">scrgiorgio@gmail.com</a> or <a href="mailto:pascucci.valerio@gmail.com">pascucci.valerio@gmail.com</a>.</p>
+        <div class="support-grid">
+          <a href="https://sci-visus.github.io/OpenVisus/" target="_blank" rel="noopener" class="support-card">
+            <h3>📚 Documentation</h3>
+            <p>Installation, configuration, viewer, and Python package docs</p>
+          </a>
+          <a href="https://github.com/sci-visus/OpenVisus/issues" target="_blank" rel="noopener" class="support-card">
+            <h3>🐛 Issue Tracker</h3>
+            <p>Report bugs and request features on GitHub</p>
+          </a>
+          <a href="https://github.com/sci-visus/OpenVisus" target="_blank" rel="noopener" class="support-card">
+            <h3>📦 Downloads</h3>
+            <p>Nightly builds, Docker containers, pip package</p>
+          </a>
+          <a href="http://wiki.visus.org" target="_blank" rel="noopener" class="support-card">
+            <h3>📖 Wiki</h3>
+            <p>ViSUS wiki for detailed technical documentation</p>
+          </a>
+        </div>
+        <div class="install-code">
+          <p class="install-label">Quick Install</p>
+          <pre><code>pip install --upgrade OpenVisus
+python -m OpenVisus configure
+python -m OpenVisus viewer</code></pre>
+        </div>
+
+        <h2 class="subsection-title">Get in Touch</h2>
+        <p class="subsection-lead">Have questions or feedback? Send us a message.</p>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xwvnldao" method="POST">
+          <input type="hidden" name="_subject" value="OpenVisus Website Contact">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required rows="5" placeholder="Your message..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><img src="openvisus-logo.png" alt="">OpenVisus</a>
+          <p>Open source big data visualization for science.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/sci-visus/OpenVisus" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://visus.org" target="_blank" rel="noopener">ViSUS.org</a>
+          <a href="https://github.com/sci-visus/OpenVisus/blob/master/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+      </div>
+      <p class="footer-copy">© OpenVisus · BSD License · For issues: <a href="mailto:scrgiorgio@gmail.com">scrgiorgio@gmail.com</a>, <a href="mailto:pascucci.valerio@gmail.com">pascucci.valerio@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

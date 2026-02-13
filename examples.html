@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenVisus examples: dashboards, Jupyter notebooks, cookbooks, and the IEEE SciVis Contest.">
+  <title>Examples - OpenVisus</title>
+  <link rel="icon" href="openvisus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('openvisus-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="openvisus-logo.png" alt="">OpenVisus</a>
+    <div class="nav-inner">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+        <span class="theme-icon theme-icon-sun" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+        <span class="theme-icon theme-icon-moon" aria-hidden="true" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        <span class="theme-label">Light</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="about.html">What It Is</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="examples.html">Examples</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="team.html">Team</a></li>
+    </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="section section-examples">
+      <div class="container">
+        <p class="section-brand">OpenVisus</p>
+        <h1 class="section-title">Examples</h1>
+        <p class="section-lead">See OpenVisus in action with real scientific datasets. Many of these are powered by the <a href="https://nationalsciencedatafabric.org/" target="_blank" rel="noopener">National Science Data Fabric (NSDF)</a>, a collaboration with the University of Utah's SCI Institute.</p>
+
+        <!-- IEEE SciVis Contest 2026 - Prominent -->
+        <div class="contest-banner">
+          <h2 class="subsection-title">IEEE SciVis Contest 2026</h2>
+          <p class="contest-lead">Visualizing the future of climate science with petascale oceanic and atmospheric data. The contest datasets are provided in <strong>IDX format</strong>, enabling efficient multi-resolution access and interactive visualization with OpenVisus.</p>
+          <div class="contest-links">
+            <a href="https://sciviscontest2026.github.io/" target="_blank" rel="noopener" class="btn btn-primary">Contest Website</a>
+            <a href="https://mybinder.org/v2/gh/sci-visus/sciviscontest2026/binder" target="_blank" rel="noopener" class="btn btn-secondary">Launch Binder</a>
+            <a href="https://projectpythia.org/nsdf-openvisus-cookbook/notebooks/scivis-contest-2026/" target="_blank" rel="noopener" class="btn btn-secondary">Cookbook Guide</a>
+          </div>
+          <p class="contest-note">$1,000 cash prize for the best submission. Use OpenVisus, Openvisuspy, and other open-source tools. Data hosted in the cloud.</p>
+        </div>
+
+        <h1 class="subsection-title">Dashboards</h1>
+        <p class="subsection-lead">Interactive dashboards for exploring large-scale scientific data.</p>
+        <div class="dashboards-grid">
+          <a href="https://nasa-arset.nationalsciencedatafabric.org/" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NASA ARSET</span>
+                <small>NEX-GDDP-CMIP6 climate data</small>
+              </div>
+            </div>
+            <h3>NASA ARSET</h3>
+            <p>NEX-GDDP-CMIP6 climate modeling dashboard</p>
+          </a>
+          <a href="https://chpc3.nationalsciencedatafabric.org:12347/" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NEX-GDDP-CMIP6</span>
+                <small>Climate dataset</small>
+              </div>
+            </div>
+            <h3>NEX-GDDP-CMIP6</h3>
+            <p>Climate projection dataset dashboard</p>
+          </a>
+          <a href="https://chpc3.nationalsciencedatafabric.org:11957/app" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>LLC 2160</span>
+                <small>NSDF Dashboard</small>
+              </div>
+            </div>
+            <h3>LLC 2160 Dataset</h3>
+            <p>High-resolution ocean modeling data</p>
+          </a>
+          <a href="https://chpc3.nationalsciencedatafabric.org:11857/" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NASA Kuroshio</span>
+                <small>Coupled atmospheric & oceanic</small>
+              </div>
+            </div>
+            <h3>NASA Kuroshio Region</h3>
+            <p>Coupled dashboard for atmospheric and oceanic variables</p>
+          </a>
+          <a href="https://data.neonscience.org/data-products/DP3.30010.001" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NEON</span>
+                <small>NSF Ecological Observatory</small>
+              </div>
+            </div>
+            <h3>NEON</h3>
+            <p>Airborne Observation Platform imagery. Viewer from collaboration with the ViSUS Project at the University of Utah.</p>
+          </a>
+          <a href="https://ncar.nationalsciencedatafabric.org/neon-demo/v1" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NCAR NEON Demo</span>
+                <small>Interactive remotely sensed data</small>
+              </div>
+            </div>
+            <h3>NCAR NEON Demo</h3>
+            <p>Interactive exploration of remotely sensed AOP data. Pan and zoom to stream higher-resolution imagery.</p>
+          </a>
+        </div>
+        <div class="dashboards-grid">
+          <a href="https://nationalsciencedatafabric.org/dashboards.html" target="_blank" rel="noopener" class="dashboard-card dashboard-card-highlight">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NSDF Dashboards</span>
+                <small>Browse all 200TB+ of data</small>
+              </div>
+            </div>
+            <h3>All NSDF Dashboards</h3>
+            <p>Climate modeling, GEOTiled, CHESS, material science, catalog, and more. Over 200TB accessible with zero egress fees.</p>
+          </a>
+          <a href="https://visus.org/content/visus-webviewer" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>ViSUS WebViewer</span>
+                <small>Explore large-scale datasets</small>
+              </div>
+            </div>
+            <h3>ViSUS WebViewer</h3>
+            <p>Browser-based exploration of teravoxel imagery</p>
+          </a>
+        </div>
+
+        <h2 class="subsection-title">Jupyter Notebooks & Cookbooks</h2>
+        <p class="subsection-lead">Learn to access, visualize, and analyze petascale datasets with OpenVisus.</p>
+        <div class="dashboards-grid">
+          <a href="https://github.com/aashishpanta0/IEEE_SciVis_Notebooks_Examples/tree/main" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>IEEE SciVis Notebooks</span>
+                <small>Petascale data access</small>
+              </div>
+            </div>
+            <h3>IEEE SciVis Notebooks Examples</h3>
+            <p>Jupyter notebooks for accessing data from petascale repositories. Includes CMIP6, DYAMOND (GEOS, ocean), and LLC4320 workflows. Run locally or with Codespaces.</p>
+          </a>
+          <a href="https://projectpythia.org/nsdf-openvisus-cookbook/" target="_blank" rel="noopener" class="dashboard-card dashboard-card-highlight">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NSDF-OpenVISUS Cookbook</span>
+                <small>Project Pythia</small>
+              </div>
+            </div>
+            <h3>NSDF-OpenVISUS Cookbook</h3>
+            <p>Project Pythia cookbook for large-scale scientific data with OpenVisus. Covers NASA DYAMOND, ECCO LLC4320, hierarchical Z-order storage, and the 2026 IEEE SciVis Contest. Run on Binder or locally.</p>
+          </a>
+          <a href="https://mybinder.org/v2/gh/sci-visus/sciviscontest2026/binder" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>SciVis Contest 2026</span>
+                <small>Binder environment</small>
+              </div>
+            </div>
+            <h3>SciVis Contest 2026 Binder</h3>
+            <p>Launch the IEEE SciVis Contest 2026 notebooks in the cloud with Binder</p>
+          </a>
+          <a href="https://nationalsciencedatafabric.org/nsdf_tutorial" target="_blank" rel="noopener" class="dashboard-card">
+            <div class="dashboard-preview">
+              <div class="dashboard-placeholder">
+                <span>NSDF Tutorial</span>
+                <small>End-to-end analysis</small>
+              </div>
+            </div>
+            <h3>NSDF Tutorial</h3>
+            <p>Using NSDF for end-to-end analysis of scientific data. Covers GEOtiled, data upload/download/streaming, and deploying the NSDF dashboard with OpenVisus.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><img src="openvisus-logo.png" alt="">OpenVisus</a>
+          <p>Open source big data visualization for science.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/sci-visus/OpenVisus" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://visus.org" target="_blank" rel="noopener">ViSUS.org</a>
+          <a href="https://github.com/sci-visus/OpenVisus/blob/master/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+      </div>
+      <p class="footer-copy">© OpenVisus · BSD License · For issues: <a href="mailto:scrgiorgio@gmail.com">scrgiorgio@gmail.com</a>, <a href="mailto:pascucci.valerio@gmail.com">pascucci.valerio@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
