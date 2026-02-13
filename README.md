@@ -13,6 +13,7 @@ Each section lives in its own HTML file for easier maintenance:
 | `how-it-works.html` | How It Works — Data production → delivery → visualization |
 | `examples.html` | Examples — Dashboards, Jupyter notebooks, cookbooks, IEEE SciVis Contest |
 | `community.html` | Community — NSDF collaborations, CHESS, SDSC, and data democratization |
+| `downloads.html` | Downloads — Nightly builds, Docker, Python, PIDX |
 | `support.html` | Support & Contact — Documentation, GitHub, Wiki, quick install, contact form |
 | `team.html` | Team — Customize with team members |
 

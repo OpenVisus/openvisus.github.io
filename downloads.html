@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="OpenVisus community: NSDF collaborations, CHESS, and scientific data democratization.">
-  <title>Community - OpenVisus</title>
+  <meta name="description" content="Download OpenVisus: nightly builds, Docker containers, Python pip package, and PIDX library.">
+  <title>Downloads - OpenVisus</title>
   <link rel="icon" href="openvisus-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,33 +42,55 @@
   </nav>
 
   <main class="main-content">
-    <section class="section section-community">
+    <section class="section section-downloads">
       <div class="container">
         <p class="section-brand">OpenVisus</p>
-        <h1 class="section-title">Community</h1>
-        <p class="section-lead">OpenVisus powers collaborations across the National Science Data Fabric (NSDF) and beyond, enabling democratized access to large-scale scientific data.</p>
+        <h1 class="section-title">Downloads</h1>
+        <p class="section-lead">Get OpenVisus and related tools. For documentation, visit our <a href="http://wiki.visus.org" target="_blank" rel="noopener">Wiki</a>.</p>
 
-        <div class="dashboards-grid">
-          <a href="https://www.chess.cornell.edu/national-science-data-fabric-and-chess-collaborate-democratize-data-driven-scientific-discovery" target="_blank" rel="noopener" class="dashboard-card dashboard-card-highlight">
-            <div class="dashboard-preview">
-              <div class="dashboard-placeholder">
-                <span>NSDF & CHESS</span>
-                <small>Cornell Synchrotron</small>
-              </div>
+        <div class="downloads-grid">
+          <div class="download-card">
+            <h2 class="download-title">OpenViSUS</h2>
+            <p class="download-desc">Nightly builds for macOS, Windows, and Linux of the OpenVisus Framework.</p>
+            <div class="download-links">
+              <a href="https://github.com/sci-visus/OpenVisus/releases" target="_blank" rel="noopener" class="btn btn-primary">Download</a>
+              <a href="http://wiki.visus.org/index.php/ViSUS_Viewer" target="_blank" rel="noopener" class="btn btn-secondary">Learn more</a>
             </div>
-            <h3>NSDF and CHESS Collaborate to Democratize Data-Driven Scientific Discovery</h3>
-            <p>National Science Data Fabric and the Cornell High Energy Synchrotron Source (CHESS) partnered to enable real-time visualization of large 3D datasets. OpenViSUS dashboards stream data visualization in as little as 20 minutes, with NSDF Entry Points connecting CHESS to federated storage, compute, and networking.</p>
-          </a>
-          <a href="https://www.sdsc.edu/news/2023/PR20230627_NSDF.html" target="_blank" rel="noopener" class="dashboard-card dashboard-card-highlight">
-            <div class="dashboard-preview">
-              <div class="dashboard-placeholder">
-                <span>NSDF Catalog</span>
-                <small>SDSC / UC San Diego</small>
-              </div>
+          </div>
+
+          <div class="download-card">
+            <h2 class="download-title">Docker</h2>
+            <p class="download-desc">Docker containers with Server, WebViewer, and utilities.</p>
+            <div class="download-links">
+              <a href="https://hub.docker.com/u/visus" target="_blank" rel="noopener" class="btn btn-primary">Download</a>
+              <a href="http://wiki.visus.org/index.php/ViSUS_Data_Portal" target="_blank" rel="noopener" class="btn btn-secondary">Learn more</a>
             </div>
-            <h3>National Science Data Fabric Catalog Grows toward AI-Integrated Scientific Innovation</h3>
-            <p>The NSDF Catalog houses nearly 70 repositories—from geosciences to NASA imagery—with over 1.5 billion records and 75+ petabytes cataloged. A multi-federation effort by SDSC, University of Utah, and University of Tennessee, advancing FAIR data and open science infrastructure.</p>
-          </a>
+          </div>
+
+          <div class="download-card">
+            <h2 class="download-title">Python</h2>
+            <p class="download-desc">Install OpenVisus using pip and use it for your Python applications. Supports Jupyter notebooks.</p>
+            <div class="download-links">
+              <a href="https://pypi.org/project/openvisus/" target="_blank" rel="noopener" class="btn btn-primary">Install</a>
+              <a href="https://github.com/sci-visus/OpenVisus/tree/master/Samples/jupyter" target="_blank" rel="noopener" class="btn btn-secondary">Jupyter notebooks</a>
+            </div>
+          </div>
+
+          <div class="download-card">
+            <h2 class="download-title">PIDX</h2>
+            <p class="download-desc">High performance I/O library that writes and reads in the IDX multi-resolution format.</p>
+            <div class="download-links">
+              <a href="https://github.com/sci-visus/PIDX" target="_blank" rel="noopener" class="btn btn-primary">Download</a>
+              <a href="http://wiki.visus.org/index.php/PIDX" target="_blank" rel="noopener" class="btn btn-secondary">Learn more</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="install-code">
+          <p class="install-label">Quick Install (Python)</p>
+          <pre><code>pip install --upgrade OpenVisus
+python -m OpenVisus configure
+python -m OpenVisus viewer</code></pre>
         </div>
       </div>
     </section>
