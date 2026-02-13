@@ -5,6 +5,19 @@
 (function () {
   'use strict';
 
+  // Load shared footer
+  const footerPlaceholder = document.getElementById('footer-placeholder');
+  if (footerPlaceholder) {
+    fetch('footer.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        footerPlaceholder.outerHTML = html;
+      })
+      .catch(function () {
+        footerPlaceholder.outerHTML = '<footer class="footer"><div class="container"><p class="footer-copy">© OpenVisus · BSD License</p></div></footer>';
+      });
+  }
+
   // Theme toggle
   const THEME_KEY = 'openvisus-theme';
   const themeToggle = document.getElementById('themeToggle');
