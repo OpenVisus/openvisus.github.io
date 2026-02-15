@@ -34,40 +34,43 @@
         <p class="section-brand">OpenVisus</p>
         <h1 class="section-title">Publications</h1>
         <div class="publications-list">
-          <ul class="publication-items">
-            <li>
+          <div class="publications-toolbar">
+            <label for="publication-sort" class="publication-sort-label">Sort by year</label>
+            <select id="publication-sort" class="publication-sort" aria-label="Sort publications by year">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+          </div>
+          <ul class="publication-items" id="publication-items">
+            <li data-year="2001">
               <a href="https://ieeexplore.ieee.org/abstract/document/5669296" target="_blank" rel="noopener">Global Static Indexing for Real-Time Exploration of Very Large Regular Grids</a>
               <span class="publication-venue">IEEE/ACM SC 2001</span>
             </li>
-            <li>
-              <a href="https://dl.acm.org/doi/10.1145/1944846.1944847" target="_blank" rel="noopener">Interactive Editing of Massive Images Made Simple: Turning Atlanta into Atlantis</a>
-              <span class="publication-venue">ACM TOG 2011</span>
-            </li>
-            <li>
+            <li data-year="2011">
               <a href="https://ieeexplore.ieee.org/abstract/document/6061045" target="_blank" rel="noopener">PIDX: Efficient Parallel I/O for Multi-resolution Multi-dimensional Scientific Datasets</a>
               <span class="publication-venue">IEEE Cluster 2011</span>
             </li>
-            <li>
+            <li data-year="2014">
               <a href="https://link.springer.com/chapter/10.1007/978-3-319-07518-1_20" target="_blank" rel="noopener">Fast Multiresolution Reads of Massive Simulation Datasets</a>
               <span class="publication-venue">ISC 2014 / Springer LNCS</span>
             </li>
-            <li>
+            <li data-year="2024">
               <a href="https://ieeexplore.ieee.org/document/10767643" target="_blank" rel="noopener">Web-based Visualization and Analytics of Petascale Data: Equity as a Tide that Lifts All Boats</a>
               <span class="publication-venue">IEEE LDAV 2024</span>
             </li>
-            <li>
+            <li data-year="2026">
               <a href="https://ieeexplore.ieee.org/document/11297838" target="_blank" rel="noopener">Expanding Access to Science Participation: A FAIR Framework for Petascale Data Visualization and Analytics</a>
               <span class="publication-venue">IEEE TVCG 2026</span>
             </li>
-            <li>
+            <li data-year="2025">
               <a href="https://ieeexplore.ieee.org/abstract/document/11044452" target="_blank" rel="noopener">Scalable Climate Data Analysis: Balancing Petascale Fidelity and Computational Cost</a>
               <span class="publication-venue">IEEE CCGrid 2025</span>
             </li>
-            <li>
+            <li data-year="2023">
               <a href="https://ieeexplore.ieee.org/document/10505129" target="_blank" rel="noopener">Enhancing Scientific Research with FAIR Digital Objects in the National Science Data Fabric</a>
               <span class="publication-venue">IEEE CSE 2023</span>
             </li>
-            <li>
+            <li data-year="2026">
               <a href="https://arxiv.org/pdf/2602.05837" target="_blank" rel="noopener">Large Data Acquisition and Analytics at Synchrotron Radiation Facilities</a>
               <span class="publication-venue">arXiv 2026</span>
             </li>
@@ -79,5 +82,26 @@
   </main>
   <div id="footer-placeholder"></div>
   <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var list = document.getElementById('publication-items');
+      var select = document.getElementById('publication-sort');
+      if (!list || !select) return;
+
+      function sortList(order) {
+        var items = [].slice.call(list.querySelectorAll('li[data-year]'));
+        items.sort(function (a, b) {
+          var yearA = parseInt(a.getAttribute('data-year'), 10);
+          var yearB = parseInt(b.getAttribute('data-year'), 10);
+          if (yearA !== yearB) return order === 'newest' ? yearB - yearA : yearA - yearB;
+          return 0;
+        });
+        items.forEach(function (el) { list.appendChild(el); });
+      }
+
+      sortList('newest');
+      select.addEventListener('change', function () { sortList(select.value); });
+    })();
+  </script>
 </body>
 </html>
