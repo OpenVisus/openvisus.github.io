@@ -5,6 +5,46 @@
 (function () {
   'use strict';
 
+  // Load shared header (nav), then run nav-dependent inits
+  const navPlaceholder = document.getElementById('nav-placeholder');
+  if (navPlaceholder) {
+    fetch('header.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        navPlaceholder.outerHTML = html;
+        initAfterNavLoaded();
+      })
+      .catch(function () {
+        navPlaceholder.outerHTML = '<nav class="nav" id="nav"><div class="container"><a href="index.html" class="nav-logo">OpenVisus</a></div></nav>';
+        initAfterNavLoaded();
+      });
+  } else {
+    initAfterNavLoaded();
+  }
+
+  // Load shared subnav (about/policies link row)
+  const subnavPlaceholder = document.getElementById('subnav-placeholder');
+  if (subnavPlaceholder) {
+    fetch('subnav.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        subnavPlaceholder.outerHTML = html;
+        setSubnavActive();
+      })
+      .catch(function () {
+        subnavPlaceholder.outerHTML = '';
+      });
+  }
+
+  function setSubnavActive() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.about-subnav-links a').forEach(function (a) {
+      if (a.getAttribute('href') === currentPage) {
+        a.classList.add('active');
+      }
+    });
+  }
+
   // Load shared footer
   const footerPlaceholder = document.getElementById('footer-placeholder');
   if (footerPlaceholder) {
@@ -18,73 +58,87 @@
       });
   }
 
-  // Theme toggle
-  const THEME_KEY = 'openvisus-theme';
-  const themeToggle = document.getElementById('themeToggle');
-  const themeLabel = themeToggle?.querySelector('.theme-label');
-  const themeIconSun = document.querySelector('.theme-icon-sun');
-  const themeIconMoon = document.querySelector('.theme-icon-moon');
+  function initAfterNavLoaded() {
+    // Theme toggle
+    const THEME_KEY = 'openvisus-theme';
+    const themeToggle = document.getElementById('themeToggle');
+    const themeLabel = themeToggle ? themeToggle.querySelector('.theme-label') : null;
+    const themeIconSun = document.querySelector('.theme-icon-sun');
+    const themeIconMoon = document.querySelector('.theme-icon-moon');
 
-  function getTheme() {
-    return localStorage.getItem(THEME_KEY) || 'dark';
-  }
-
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(THEME_KEY, theme);
-    if (themeLabel) themeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
-    if (themeIconSun) themeIconSun.style.display = theme === 'dark' ? '' : 'none';
-    if (themeIconMoon) themeIconMoon.style.display = theme === 'light' ? '' : 'none';
-  }
-
-  function initTheme() {
-    const theme = getTheme();
-    document.documentElement.setAttribute('data-theme', theme);
-    if (themeLabel) themeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
-    if (themeIconSun) themeIconSun.style.display = theme === 'dark' ? '' : 'none';
-    if (themeIconMoon) themeIconMoon.style.display = theme === 'light' ? '' : 'none';
-  }
-
-  if (themeToggle) {
-    initTheme();
-    themeToggle.addEventListener('click', function () {
-      const current = getTheme();
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-  }
-
-  // Set active nav link based on current page
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(function (a) {
-    const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      a.classList.add('active');
+    function getTheme() {
+      return localStorage.getItem(THEME_KEY) || 'dark';
     }
-  });
 
-  // Mobile navigation toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.querySelector('.nav-links');
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem(THEME_KEY, theme);
+      if (themeLabel) themeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
+      if (themeIconSun) themeIconSun.style.display = theme === 'dark' ? '' : 'none';
+      if (themeIconMoon) themeIconMoon.style.display = theme === 'light' ? '' : 'none';
+    }
 
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
-    });
+    function initTheme() {
+      const theme = getTheme();
+      document.documentElement.setAttribute('data-theme', theme);
+      if (themeLabel) themeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
+      if (themeIconSun) themeIconSun.style.display = theme === 'dark' ? '' : 'none';
+      if (themeIconMoon) themeIconMoon.style.display = theme === 'light' ? '' : 'none';
+    }
 
-    // Close menu when clicking a link (for mobile)
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navLinks.classList.remove('open');
+    if (themeToggle) {
+      initTheme();
+      themeToggle.addEventListener('click', function () {
+        const current = getTheme();
+        setTheme(current === 'dark' ? 'light' : 'dark');
       });
-    });
+    }
 
-    // Close menu when clicking outside
-    document.addEventListener('click', function (e) {
-      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-        navLinks.classList.remove('open');
+    // Set active nav link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      const href = a.getAttribute('href');
+      if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+        a.classList.add('active');
       }
     });
+
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+      });
+
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('open');
+        }
+      });
+    }
+
+    // Navbar background on scroll
+    const nav = document.getElementById('nav');
+    if (nav) {
+      function updateNavBackground() {
+        const scrolled = window.scrollY > 50;
+        nav.style.background = scrolled
+          ? 'var(--color-nav-bg-scrolled)'
+          : 'var(--color-nav-bg)';
+      }
+
+      window.addEventListener('scroll', updateNavBackground);
+      updateNavBackground();
+    }
   }
 
   // Smooth scroll for anchor links (fallback for older browsers)
@@ -100,20 +154,6 @@
       }
     });
   });
-
-  // Navbar background on scroll
-  const nav = document.getElementById('nav');
-  if (nav) {
-    function updateNavBackground() {
-      const scrolled = window.scrollY > 50;
-      nav.style.background = scrolled
-        ? 'var(--color-nav-bg-scrolled)'
-        : 'var(--color-nav-bg)';
-    }
-
-    window.addEventListener('scroll', updateNavBackground);
-    updateNavBackground();
-  }
 
   // Contact form submission
   const contactForm = document.getElementById('contactForm');

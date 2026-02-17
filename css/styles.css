@@ -311,6 +311,46 @@ body {
   width: 100%;
 }
 
+/* Home / Examples lead statement (first thing readers see) */
+.home-lead {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 0 2.5rem;
+  line-height: 1.5;
+}
+
+/* About page: link row under main nav */
+.about-subnav {
+  padding: 1rem 0;
+  margin-top: 5rem;
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-subnav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.about-subnav-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.about-subnav-links a:hover,
+.about-subnav-links a.active {
+  color: var(--color-accent);
+}
+
 /* Page layout (for inner pages) */
 .main-content {
   padding-top: 6rem;

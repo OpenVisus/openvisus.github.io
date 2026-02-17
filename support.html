@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="OpenVisus support and contact: documentation, issues, downloads, quick install, and get in touch.">
-  <title>Support & Contact - OpenVisus</title>
+  <meta name="description" content="OpenVisus developer resources: documentation, issues, downloads, quick install, and developer tools.">
+  <title>Developers - OpenVisus</title>
   <link rel="icon" href="openvisus-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,37 +15,15 @@
   </script>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <a href="index.html" class="nav-logo"><img src="openvisus-logo.png" alt="">OpenVisus</a>
-    <div class="nav-inner">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
-        <span class="theme-icon theme-icon-sun" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
-        <span class="theme-icon theme-icon-moon" aria-hidden="true" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
-        <span class="theme-label">Light</span>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="examples.html">Examples</a></li>
-      <li><a href="community.html">Community</a></li>
-      <li><a href="downloads.html">Downloads</a></li>
-      <li><a href="support.html">Support</a></li>
-      <li><a href="team.html">Team</a></li>
-    </ul>
-    </div>
-  </nav>
+  <div id="nav-placeholder"></div>
+  <div id="subnav-placeholder"></div>
 
   <main class="main-content">
     <section class="section section-support">
       <div class="container">
         <p class="section-brand">OpenVisus</p>
-        <h1 class="section-title">Support & Resources</h1>
-        <p class="section-lead">For issues or questions, reach out to <a href="mailto:scrgiorgio@gmail.com">scrgiorgio@gmail.com</a>, or fill out the contact form below.</p>
+        <h1 class="section-title">Developers</h1>
+        <p class="section-lead">Resources for developers using OpenVisus. For questions or feedback, <a href="contact.html">contact us</a>.</p>
         <div class="support-grid">
           <a href="https://sci-visus.github.io/OpenVisus/" target="_blank" rel="noopener" class="support-card">
             <h3>📚 Documentation</h3>
@@ -70,31 +48,6 @@
 python -m OpenVisus configure
 python -m OpenVisus viewer</code></pre>
         </div>
-
-        <h2 class="subsection-title">Get in Touch</h2>
-        <p class="subsection-lead">Have questions or feedback? Send us a message.</p>
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xwvnldao" method="POST">
-          <input type="hidden" name="_subject" value="OpenVisus Website Contact">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="you@example.com">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="What's this about?">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required rows="5" placeholder="Your message..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-        </form>
       </div>
     </section>
   </main>
