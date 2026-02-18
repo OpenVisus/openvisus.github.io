@@ -924,6 +924,32 @@ body {
   text-decoration: underline;
 }
 
+/* Narrow footer bar on every page */
+.footer-bar {
+  padding: 0.4rem 0;
+  background: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.footer-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-bar-right a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.footer-bar-right a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 600px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
