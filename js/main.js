@@ -45,21 +45,23 @@
     });
   }
 
-  // Load shared footer
+  // Load shared footer, then init theme toggle (button lives in footer)
   const footerPlaceholder = document.getElementById('footer-placeholder');
   if (footerPlaceholder) {
     fetch('footer.html')
       .then(function (r) { return r.text(); })
       .then(function (html) {
         footerPlaceholder.outerHTML = html;
+        initThemeToggle();
       })
       .catch(function () {
         footerPlaceholder.outerHTML = '<footer class="footer"><div class="container"><p class="footer-copy">© OpenVisus · BSD License</p></div></footer>';
       });
+  } else {
+    initThemeToggle();
   }
 
-  function initAfterNavLoaded() {
-    // Theme toggle
+  function initThemeToggle() {
     const THEME_KEY = 'openvisus-theme';
     const themeToggle = document.getElementById('themeToggle');
     const themeLabel = themeToggle ? themeToggle.querySelector('.theme-label') : null;
@@ -78,22 +80,23 @@
       if (themeIconMoon) themeIconMoon.style.display = theme === 'light' ? '' : 'none';
     }
 
-    function initTheme() {
+    function syncThemeUI() {
       const theme = getTheme();
-      document.documentElement.setAttribute('data-theme', theme);
       if (themeLabel) themeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
       if (themeIconSun) themeIconSun.style.display = theme === 'dark' ? '' : 'none';
       if (themeIconMoon) themeIconMoon.style.display = theme === 'light' ? '' : 'none';
     }
 
     if (themeToggle) {
-      initTheme();
+      syncThemeUI();
       themeToggle.addEventListener('click', function () {
         const current = getTheme();
         setTheme(current === 'dark' ? 'light' : 'dark');
       });
     }
+  }
 
+  function initAfterNavLoaded() {
     // Set active nav link based on current page
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a').forEach(function (a) {
