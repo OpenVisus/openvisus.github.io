@@ -13,3 +13,18 @@ Place your preview images here. Use **16:10 aspect ratio** (e.g. 960×600 or 128
 | `nsdf-dashboards-preview.jpg` | All NSDF Dashboards |
 
 Use `.png` instead of `.jpg` if you prefer; update the `src` in `examples.html` to match.
+
+---
+
+## Case Studies & Announcements deck (Examples page)
+
+Same **16:10** aspect ratio. Place in `images/` and use these names (or update `examples.html` to match):
+
+| Filename | Card |
+|----------|------|
+| `case-chess.jpg` or `.png` | CHESS & NSDF |
+| `case-nsdf.jpg` or `.png` | NSDF |
+| `case-material-science.jpg` or `.png` | Material Science |
+| `case-neon.jpg` or `.png` | NEON |
+
+If you use `.jpg` and your gitignore excludes it, run: `git add -f images/case-*.jpg`
