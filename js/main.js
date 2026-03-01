@@ -144,6 +144,16 @@
     }
   }
 
+  // Slow-loading external links: show message before opening (e.g. NASA Kuroshio dashboard)
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[data-slow-load="true"]');
+    if (!link) return;
+    e.preventDefault();
+    if (confirm('This dashboard may take 30–60 seconds to load. Open it?')) {
+      window.open(link.href, link.getAttribute('target') || '_blank', 'noopener');
+    }
+  });
+
   // Smooth scroll for anchor links (fallback for older browsers)
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {

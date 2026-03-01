@@ -48,6 +48,16 @@
 python -m OpenVisus configure
 python -m OpenVisus viewer</code></pre>
         </div>
+        <div class="install-code">
+          <p class="install-label">Mac Silicon support</p>
+          <pre><code>python -m pip uninstall OpenVisus
+python -m pip uninstall OpenVisusNoGui
+python -m pip install --upgrade OpenVisus
+CODE_SIGN=$(which codesign) python3 -m OpenVisus configure
+python -m OpenVisus test
+python -m OpenVisus test-gui
+python -m OpenVisus viewer</code></pre>
+        </div>
       </div>
     </section>
   </main>

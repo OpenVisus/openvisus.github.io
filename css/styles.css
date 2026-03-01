@@ -658,11 +658,14 @@ html[data-theme="light"] .examples-hero-text {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pipeline-step {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 3rem 1fr;
   gap: 1.5rem;
   align-items: start;
   padding: 2rem;
@@ -676,6 +679,7 @@ html[data-theme="light"] .examples-hero-text {
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-accent);
+  min-width: 0;
 }
 
 .pipeline-step h3 {
@@ -683,9 +687,20 @@ html[data-theme="light"] .examples-hero-text {
   margin-bottom: 0.5rem;
 }
 
+.pipeline-step p,
+.pipeline-step .link-arrow {
+  grid-column: 1 / -1;
+}
+
 .pipeline-step p {
   color: var(--color-text-muted);
   margin-bottom: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .pipeline {
+    max-width: 100%;
+  }
 }
 
 .link-arrow {
