@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenVisus Python package: reference for functions used with Jupyter and ViSUS servers.">
+  <title>Python Functions - OpenVisus</title>
+  <link rel="icon" href="./images/Logos/OpenVisus_logoArtOnly_Blue.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('openvisus-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
+  </script>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div> 
+  <div id="subnav-placeholder"></div>
+  <main class="main-content">
+    <section class="section section-support">
+      <div class="container">
+        <p class="section-brand">OpenVisus</p>
+        <h1 class="section-title">Python Functions</h1>
+        <p class="section-lead">The OpenVisus Python package connects to a local IDX dataset or ViSUS server and reads bricks through <code>PyDataset.read()</code>. Below are common patterns; API details match the <a href="https://sci-visus.github.io/OpenVisus/docs/python-functions/all/OpenVisus.dataset.PyDataset.read.html" target="_blank" rel="noopener">official <code>read</code> reference</a>.</p>
+
+        <div class="support-grid">
+          <a href="https://sci-visus.github.io/OpenVisus/docs/python-functions.html" target="_blank" rel="noopener" class="support-card">
+            <h3>📘 Docs: Python functions</h3>
+            <p>Table of contents on the docs site</p>
+          </a>
+          <a href="https://sci-visus.github.io/OpenVisus/docs/python-functions/important.html" target="_blank" rel="noopener" class="support-card">
+            <h3>⭐ Important functions</h3>
+            <p>Curated API list with links</p>
+          </a>
+          <a href="https://sci-visus.github.io/OpenVisus/docs/python-functions/all.html" target="_blank" rel="noopener" class="support-card">
+            <h3>📋 All functions</h3>
+            <p>Full package index</p>
+          </a>
+          <a href="https://github.com/sci-visus/OpenVisus/tree/master/Samples" target="_blank" rel="noopener" class="support-card">
+            <h3>🔬 Samples</h3>
+            <p>Repository samples and notebooks</p>
+          </a>
+          <a href="https://github.com/sci-visus/sciviscontest2026/tree/main/notebooks_examples" target="_blank" rel="noopener" class="support-card">
+            <h3>📓 SciVis 2026 examples</h3>
+            <p>Jupyter notebooks for IEEE SciVis Contest datasets (CMIP6, DYAMOND, LLC2160/4320, …)</p>
+          </a>
+        </div>
+
+        <h2 class="subsection-title">Install &amp; configure</h2>
+        <div class="install-code">
+          <p class="install-label">Shell</p>
+          <pre><code>pip install --upgrade OpenVisus</code></pre>
+        </div>
+
+        <h2 class="subsection-title">Load a dataset</h2>
+        <p class="subsection-lead"><a href="https://sci-visus.github.io/OpenVisus/docs/python-functions/all/OpenVisus.LoadDataset.html" target="_blank" rel="noopener"><code>LoadDataset(url)</code></a> returns a <code>PyDataset</code>. The URL can be a path to an <code>.idx</code> file or an HTTP URL to a ViSUS server.</p>
+        <div class="install-code">
+          <p class="install-label">Python</p>
+          <pre><code>from OpenVisus import LoadDataset
+
+db = LoadDataset("./data/my_dataset.idx")
+# or: db = LoadDataset("http://example.com/visus/dataset.idx")</code></pre>
+        </div>
+
+        <h2 class="subsection-title">Inspect fields, bounds, and logic size</h2>
+        <p class="subsection-lead">Use these before choosing slices or timesteps. <code>getPointDim()</code> is <code>2</code> or <code>3</code> for native 2D vs 3D datasets. Logic coordinates are integer indices; you can also use normalized fractions (see below).</p>
+        <div class="install-code">
+          <p class="install-label">Python</p>
+          <pre><code>print(db.getPointDim())         # 2D or 3D Data (excluding Time)
+print(db.getFields())           # channel / variable names
+print(db.getLogicSize())        # size in logic indices
+print(db.getMaxResolution())   # finest refinement level
+print(db.getTimesteps())        # list of timesteps available(can be long)</code></pre>
+        </div>
+
+        <h2 class="subsection-title"><code>read()</code> &amp; <code>getLogicBox</code>: floats vs ints</h2>
+        <p class="subsection-lead"><code>read()</code> passes ranges to <a href="https://sci-visus.github.io/OpenVisus/docs/python-functions/all/OpenVisus.dataset.PyDataset.getLogicBox.html" target="_blank" rel="noopener"><code>getLogicBox</code></a>. Each bound uses its Python type: <strong>float</strong> → normalized fraction along that axis; <strong>int</strong> → logic index. Omit an axis to use the full domain along that axis. The <strong>2D</strong> and <strong>3D</strong> sections below apply the same rules&mdash;only which axes you constrain changes.</p>
+
+        <h2 class="subsection-title">2D examples</h2>
+        <p class="subsection-lead">Use when <code>getPointDim() == 2</code>, or when you read a <strong>planar slice</strong> through 3D data by fixing <code>z</code> (or <code>x</code> / <code>y</code>) to a thin slab <code>[k, k+1]</code>. Omit <code>z</code> only for native 2D IDX.</p>
+        <div class="install-code">
+          <p class="install-label">2D crop — normalized <code>X</code>, <code>Y</code></p>
+          <pre><code>data = db.read(x=[0.0, 0.9], y=[0.0, 0.9])</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">2D crop — logic indices on <code>X</code>, <code>Y</code></p>
+          <pre><code>data = db.read(x=[0, 100], y=[0, 100])</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">3D volume → one XY plane (fix <code>Z</code>)</p>
+          <pre><code>data = db.read(x=[0.0, 0.5], y=[0.0, 0.5], z=[512, 513])
+data = db.read(field="temperature", z=[100, 101])  # full XY at one Z</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">Logic box — 2D window</p>
+          <pre><code>p1, p2 = db.getLogicBox(x=[0.0, 0.25], y=[0.0, 0.25])
+data = db.read(logic_box=(p1, p2))</code></pre>
+        </div>
+
+        <h2 class="subsection-title">3D examples</h2>
+        <p class="subsection-lead">Use when <code>getPointDim() == 3</code> and you need a <strong>subvolume</strong> (not just a single slice). Constrain <code>x</code>, <code>y</code>, and <code>z</code> together.</p>
+        <div class="install-code">
+          <p class="install-label">3D subvolume — normalized box</p>
+          <pre><code>data = db.read(
+    x=[0.0, 0.1],
+    y=[0.0, 0.1],
+    z=[0.0, 0.1],
+)</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">3D subvolume — logic indices</p>
+          <pre><code>data = db.read(x=[0, 128], y=[0, 128], z=[400, 512])</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">Logic box — 3D corners from normalized ranges</p>
+          <pre><code>p1, p2 = db.getLogicBox(x=[0.0, 0.25], y=[0.0, 0.25], z=[0.0, 0.25])
+data = db.read(logic_box=(p1, p2))</code></pre>
+        </div>
+
+        <h2 class="subsection-title">Timestep, quality, and progressive refinement</h2>
+        <p class="subsection-lead">These <code>read()</code> options combine with any window: native 2D, an XY slice through 3D (fixed <code>z</code>), or a 3D brick. If <code>time</code> is omitted, the dataset&rsquo;s current/default timestep is used. <code>quality</code> is non-positive (<code>0</code> = full resolution); negative values request coarser data. See the <a href="https://sci-visus.github.io/OpenVisus/docs/python-functions/all/OpenVisus.dataset.PyDataset.read.html" target="_blank" rel="noopener"><code>read</code> docs</a>. Some Linux builds support a <code>size</code> argument for an approximate memory budget.</p>
+
+        <h3 class="doc-subtitle">Timestep</h3>
+        <div class="install-code">
+          <p class="install-label">2D — slice at <code>time=0</code> vs <code>time=1</code></p>
+          <pre><code>plane_t0 = db.read(z=[512, 513], time=0)
+plane_t1 = db.read(z=[512, 513], time=1)</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">2D — native <code>X</code>/<code>Y</code> only</p>
+          <pre><code>img = db.read(x=[0, 512], y=[0, 512], time=2)</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">3D subvolume</p>
+          <pre><code>brick_t0 = db.read(x=[0, 64], y=[0, 64], z=[0, 64], time=0)
+brick_t1 = db.read(x=[0, 64], y=[0, 64], z=[0, 64], time=1)</code></pre>
+        </div>
+
+        <h3 class="doc-subtitle">Quality</h3>
+        <div class="install-code">
+          <p class="install-label">2D slice — coarser (faster) preview,entire X/Y</p>
+          <pre><code>plane_coarse = db.read( quality=-3)</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">2D window — X/Y bound </p>
+          <pre><code>img_coarse = db.read(x=[0, 256], y=[0, 256], quality=-2)</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">3D brick — X/Y/Z bound</p>
+          <pre><code>brick_coarse = db.read(x=[0, 64], y=[0, 64], z=[0, 64], quality=-2)</code></pre>
+        </div>
+
+        <h3 class="doc-subtitle">Progressive refinement</h3>
+        <p class="subsection-lead">With <code>num_refinements &gt; 1</code>, <code>read()</code> returns a <strong>generator</strong> that yields the same region at progressively finer resolutions; use <code>num_refinements=1</code> (default) for a single <code>numpy</code> array.</p>
+        <div class="install-code">
+          <p class="install-label">2D — native dataset (<code>x</code>/<code>y</code> only)</p>
+          <pre><code>for data in db.read(x=[0, 256], y=[0, 256], num_refinements=3):
+    print(data.shape, data.dtype)</code></pre>
+        </div>
+        <div class="install-code">
+          <p class="install-label">2D — XY slice through 3D (fixed <code>Z</code>)</p>
+          <pre><code>for plane in db.read(x=[0, 256], y=[0, 256], z=[0, 1], num_refinements=3):
+    print(plane.shape)</code></pre>
+        </div>
+ 
+        <div class="install-code">
+          <p class="install-label">3D brick</p>
+          <pre><code>for brick in db.read(x=[0, 128], y=[0, 128], z=[0, 32], num_refinements=3):
+    print(brick.shape)</code></pre>
+        </div>
+
+        <h2 class="subsection-title">Optional: plot a 2D slice</h2>
+        <p class="subsection-lead">After a read that returns one slab, squeeze and pass to Matplotlib.</p>
+        <div class="install-code">
+          <p class="install-label">Python</p>
+          <pre><code>import matplotlib.pyplot as plt
+import numpy as np
+
+data = db.read(z=[512, 513], field=db.getFields()[0])
+arr = np.asarray(data).squeeze()
+plt.imshow(arr, cmap="viridis", aspect="auto")
+plt.colorbar()
+plt.show()</code></pre>
+        </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
